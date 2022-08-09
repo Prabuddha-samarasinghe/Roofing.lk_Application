@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="311bf7f8-c598-41f4-9963-9ddd06d35db1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="status1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="UserName" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     customermaster.`CustomerCode` AS customermaster_CustomerCode,
+     customermaster.`CustomerName` AS customermaster_CustomerName,
+     customermaster.`PostalAddress` AS customermaster_PostalAddress,
+     customermaster.`NicOrBrNo` AS customermaster_NicOrBrNo,
+     customermaster.`Phone1` AS customermaster_Phone1,
+     customermaster.`Phone2` AS customermaster_Phone2,
+     customermaster.`FaxNo` AS customermaster_FaxNo,
+     customermaster.`eMailAddress` AS customermaster_eMailAddress,
+     customermaster.`WebSite` AS customermaster_WebSite,
+     customermaster.`ContactPerson` AS customermaster_ContactPerson,
+     customermaster.`Status` AS customermaster_Status
+FROM
+     `customermaster` customermaster
+WHERE customermaster.`Status`= $P{status1}]]>
+	</queryString>
+	<field name="customermaster_CustomerCode" class="java.lang.String"/>
+	<field name="customermaster_CustomerName" class="java.lang.String"/>
+	<field name="customermaster_PostalAddress" class="java.lang.String"/>
+	<field name="customermaster_NicOrBrNo" class="java.lang.String"/>
+	<field name="customermaster_Phone1" class="java.lang.String"/>
+	<field name="customermaster_FaxNo" class="java.lang.String"/>
+	<field name="customermaster_eMailAddress" class="java.lang.String"/>
+	<field name="customermaster_WebSite" class="java.lang.String"/>
+	<field name="customermaster_ContactPerson" class="java.lang.String"/>
+	<field name="customermaster_Status" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="321" y="37" width="208" height="37" uuid="7bc6b310-38cb-4eac-9857-7aecc56556a8"/>
+				<textElement verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="185" y="37" width="132" height="37" uuid="e7b3e596-5400-4fea-84a0-80eed0ed468f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{status1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="5" width="802" height="35" forecolor="#032337" backcolor="#032337" uuid="42c53839-ae53-4dae-8a36-6c1f2036bbdf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="7" y="12" width="77" height="20" forecolor="#FFFFFF" uuid="a2bffc3e-569f-40c9-a982-f93de12a02d2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="12" width="80" height="20" forecolor="#FFFFFF" uuid="a44bcf9d-83a2-4b87-a32a-9db34216a304"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="12" width="105" height="20" forecolor="#FFFFFF" uuid="379b8561-1e9d-4cf8-af50-867b1e3bc367"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Postal Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="317" y="12" width="65" height="20" forecolor="#FFFFFF" uuid="fa3345bc-97e2-414e-a726-5464a946c99e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIC / BR No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="382" y="12" width="70" height="20" forecolor="#FFFFFF" uuid="15674853-9b14-4eed-bdf8-9a87a47f33c5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="451" y="12" width="63" height="20" forecolor="#FFFFFF" uuid="436b0906-f593-42a3-ab08-d9c596e21482"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fax No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="595" y="12" width="61" height="20" forecolor="#FFFFFF" uuid="1f0ce4b2-7b47-429e-8603-280085b9c2c9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Web Site]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="656" y="12" width="78" height="20" forecolor="#FFFFFF" uuid="4fd8d84b-2cbd-4882-b806-3d523470a89c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contact Person]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="739" y="12" width="63" height="20" forecolor="#FFFFFF" uuid="7f118c4b-7c04-433c-a569-e6a0921c0b39"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="514" y="12" width="81" height="20" forecolor="#FFFFFF" uuid="728a2667-7edd-4305-b65c-b602d9c19c83"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[eMail Address]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="28" width="802" height="1" uuid="d9264db0-e18b-4267-ad4e-5fd436c2cc8e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="7" y="5" width="77" height="20" uuid="f2aff84a-4b03-46cd-8011-039be67477ea"/>
+				<textFieldExpression><![CDATA[$F{customermaster_CustomerCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="84" y="5" width="130" height="20" uuid="3c0ed369-9425-4d32-b909-afc969a72b1a"/>
+				<textFieldExpression><![CDATA[$F{customermaster_CustomerName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="5" width="105" height="20" uuid="218b9020-11bc-47f1-90d9-5c8210f93837"/>
+				<textFieldExpression><![CDATA[$F{customermaster_PostalAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="317" y="5" width="65" height="20" uuid="3d583c2e-51ca-48f9-9eed-cd9921d5306c"/>
+				<textFieldExpression><![CDATA[$F{customermaster_NicOrBrNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="382" y="5" width="70" height="20" uuid="fcd50111-87f0-4b7a-8b1e-bb032b8fcc8d"/>
+				<textFieldExpression><![CDATA[$F{customermaster_Phone1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="5" width="63" height="20" uuid="2c6a5a71-358e-49cc-a51d-9141932dbef6"/>
+				<textFieldExpression><![CDATA[$F{customermaster_FaxNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="5" width="86" height="20" uuid="4a66126b-a1c4-4b11-a968-668a6bd54a00"/>
+				<textFieldExpression><![CDATA[$F{customermaster_eMailAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="5" width="61" height="20" uuid="afc921de-a671-48a5-9320-35107eff9447"/>
+				<textFieldExpression><![CDATA[$F{customermaster_WebSite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="661" y="5" width="78" height="20" uuid="6ae1972a-8aea-41c4-963c-c321ea4bb37c"/>
+				<textFieldExpression><![CDATA[$F{customermaster_ContactPerson}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="739" y="5" width="63" height="20" uuid="915d955a-335e-488d-b256-388c1803fa1b"/>
+				<textFieldExpression><![CDATA[$F{customermaster_Status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="12" backcolor="#032337" uuid="42c53839-ae53-4dae-8a36-6c1f2036bbdf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="315" y="17" width="184" height="37" forecolor="#000000" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roofing.lk - Nawala]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="7" y="15" width="100" height="20" uuid="fb08fe6d-05e5-434c-a9e9-66acedc40577"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="663" y="13" width="80" height="20" uuid="b8afa3b9-f693-4a1d-be15-b3364558de71"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="743" y="13" width="40" height="20" uuid="2aa43806-1bf2-46c2-95d5-4e7fbea0cbb1"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="33" width="186" height="20" uuid="81818fc8-cdb6-4cd1-b31b-a043def67b4e"/>
+				<textElement verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{UserName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="33" width="59" height="20" forecolor="#000000" uuid="728a2667-7edd-4305-b65c-b602d9c19c83"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Printed By:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c83d150a-452d-4552-8f4a-b923a2723189">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SalesInvoicNo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="UserName" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     customermaster.`InternalId` AS customermaster_InternalId,
+     customermaster.`CustomerCode` AS customermaster_CustomerCode,
+     customermaster.`CustomerName` AS customermaster_CustomerName,
+     customermaster.`PostalAddress` AS customermaster_PostalAddress,
+     customermaster.`NicOrBrNo` AS customermaster_NicOrBrNo,
+     customermaster.`Phone1` AS customermaster_Phone1,
+     customermaster.`Phone2` AS customermaster_Phone2,
+     customermaster.`FaxNo` AS customermaster_FaxNo,
+     customermaster.`eMailAddress` AS customermaster_eMailAddress,
+     customermaster.`WebSite` AS customermaster_WebSite,
+     customermaster.`ContactPerson` AS customermaster_ContactPerson,
+     customermaster.`Status` AS customermaster_Status,
+     salesinvoice.`InternalId` AS salesinvoice_InternalId,
+     salesinvoice.`DocumentNo` AS salesinvoice_DocumentNo,
+     salesinvoice.`SoNumber` AS salesinvoice_SoNumber,
+     salesinvoice.`DocumentDate` AS salesinvoice_DocumentDate,
+     salesinvoice.`SystemDate` AS salesinvoice_SystemDate,
+     salesinvoice.`CustomerCode` AS salesinvoice_CustomerCode,
+     salesinvoice.`CustomerName` AS salesinvoice_CustomerName,
+     salesinvoice.`Total` AS salesinvoice_Total,
+     salesinvoice.`Receipt` AS salesinvoice_Receipt,
+     salesinvoice.`Balance` AS salesinvoice_Balance,
+     salesinvoice.`RefNo` AS salesinvoice_RefNo,
+     salesinvoice.`Remarks` AS salesinvoice_Remarks,
+     salesinvoice.`Status` AS salesinvoice_Status,
+     salesinvoiceitem.`InternalId` AS salesinvoiceitem_InternalId,
+     salesinvoiceitem.`SoNumber` AS salesinvoiceitem_SoNumber,
+     salesinvoiceitem.`DocumentNo` AS salesinvoiceitem_DocumentNo,
+     salesinvoiceitem.`ItemCode` AS salesinvoiceitem_ItemCode,
+     salesinvoiceitem.`ItemName` AS salesinvoiceitem_ItemName,
+     salesinvoiceitem.`UnitPrice` AS salesinvoiceitem_UnitPrice,
+     salesinvoiceitem.`Qty` AS salesinvoiceitem_Qty,
+     salesinvoiceitem.`Uom` AS salesinvoiceitem_Uom,
+     salesinvoiceitem.`DiscountPct` AS salesinvoiceitem_DiscountPct,
+     salesinvoiceitem.`SubTtl` AS salesinvoiceitem_SubTtl,
+     salesorder.`InternalId` AS salesorder_InternalId,
+     salesorder.`DocumentNo` AS salesorder_DocumentNo,
+     salesorder.`DocumentDate` AS salesorder_DocumentDate,
+     salesorder.`SystemDate` AS salesorder_SystemDate,
+     salesorder.`CustomerCode` AS salesorder_CustomerCode,
+     salesorder.`CustomerName` AS salesorder_CustomerName,
+     salesorder.`Total` AS salesorder_Total,
+     salesorder.`Receipt` AS salesorder_Receipt,
+     salesorder.`Balance` AS salesorder_Balance,
+     salesorder.`Refno` AS salesorder_Refno,
+     salesorder.`Remarks` AS salesorder_Remarks,
+     salesorder.`Status` AS salesorder_Status
+FROM
+     `customermaster` customermaster INNER JOIN `salesinvoice` salesinvoice ON customermaster.`CustomerCode` = salesinvoice.`CustomerCode`
+     INNER JOIN `salesinvoiceitem` salesinvoiceitem ON salesinvoice.`DocumentNo` = salesinvoiceitem.`DocumentNo`
+     INNER JOIN `salesorder` salesorder ON salesinvoice.`SoNumber` = salesorder.`DocumentNo`
+     AND customermaster.`CustomerCode` = salesorder.`CustomerCode`
+WHERE
+     salesinvoice.`DocumentNo` = $P{SalesInvoicNo}]]>
+	</queryString>
+	<field name="customermaster_InternalId" class="java.lang.Integer"/>
+	<field name="customermaster_CustomerCode" class="java.lang.String"/>
+	<field name="customermaster_CustomerName" class="java.lang.String"/>
+	<field name="customermaster_PostalAddress" class="java.lang.String"/>
+	<field name="customermaster_NicOrBrNo" class="java.lang.String"/>
+	<field name="customermaster_Phone1" class="java.lang.String"/>
+	<field name="customermaster_Phone2" class="java.lang.String"/>
+	<field name="customermaster_FaxNo" class="java.lang.String"/>
+	<field name="customermaster_eMailAddress" class="java.lang.String"/>
+	<field name="customermaster_WebSite" class="java.lang.String"/>
+	<field name="customermaster_ContactPerson" class="java.lang.String"/>
+	<field name="customermaster_Status" class="java.lang.String"/>
+	<field name="salesinvoice_InternalId" class="java.lang.Integer"/>
+	<field name="salesinvoice_DocumentNo" class="java.lang.String"/>
+	<field name="salesinvoice_SoNumber" class="java.lang.String"/>
+	<field name="salesinvoice_DocumentDate" class="java.lang.String"/>
+	<field name="salesinvoice_SystemDate" class="java.sql.Date"/>
+	<field name="salesinvoice_CustomerCode" class="java.lang.String"/>
+	<field name="salesinvoice_CustomerName" class="java.lang.String"/>
+	<field name="salesinvoice_Total" class="java.lang.Double"/>
+	<field name="salesinvoice_Receipt" class="java.lang.Double"/>
+	<field name="salesinvoice_Balance" class="java.lang.Double"/>
+	<field name="salesinvoice_RefNo" class="java.lang.String"/>
+	<field name="salesinvoice_Remarks" class="java.lang.String"/>
+	<field name="salesinvoice_Status" class="java.lang.String"/>
+	<field name="salesinvoiceitem_InternalId" class="java.lang.Integer"/>
+	<field name="salesinvoiceitem_SoNumber" class="java.lang.String"/>
+	<field name="salesinvoiceitem_DocumentNo" class="java.lang.String"/>
+	<field name="salesinvoiceitem_ItemCode" class="java.lang.String"/>
+	<field name="salesinvoiceitem_ItemName" class="java.lang.String"/>
+	<field name="salesinvoiceitem_UnitPrice" class="java.lang.Double"/>
+	<field name="salesinvoiceitem_Qty" class="java.lang.Integer"/>
+	<field name="salesinvoiceitem_Uom" class="java.lang.String"/>
+	<field name="salesinvoiceitem_DiscountPct" class="java.lang.Double"/>
+	<field name="salesinvoiceitem_SubTtl" class="java.lang.Double"/>
+	<field name="salesorder_InternalId" class="java.lang.Integer"/>
+	<field name="salesorder_DocumentNo" class="java.lang.String"/>
+	<field name="salesorder_DocumentDate" class="java.sql.Date"/>
+	<field name="salesorder_SystemDate" class="java.sql.Date"/>
+	<field name="salesorder_CustomerCode" class="java.lang.String"/>
+	<field name="salesorder_CustomerName" class="java.lang.String"/>
+	<field name="salesorder_Total" class="java.lang.Double"/>
+	<field name="salesorder_Receipt" class="java.lang.Double"/>
+	<field name="salesorder_Balance" class="java.lang.Double"/>
+	<field name="salesorder_Refno" class="java.lang.String"/>
+	<field name="salesorder_Remarks" class="java.lang.String"/>
+	<field name="salesorder_Status" class="java.lang.String"/>
+	<group name="Sels">
+		<groupFooter>
+			<band height="120">
+				<staticText>
+					<reportElement x="399" y="45" width="84" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cash Receipt]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="399" y="73" width="84" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Balance payment]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="399" y="25" width="84" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Grand Total]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="489" y="25" width="59" height="20" uuid="02aab38a-b719-406e-abb8-aaaf8fe41a35"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{salesinvoice_Total}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="489" y="45" width="59" height="20" uuid="688bb16b-d138-4c95-ac15-852071a772eb"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{salesinvoice_Receipt}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="489" y="73" width="59" height="20" uuid="bcff9b43-f809-4de7-909b-e3065451c563"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{salesinvoice_Balance}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="399" y="69" width="149" height="1" uuid="c0fb73ff-0c9a-4c71-b9d8-e5750411f0e9"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="168" splitType="Stretch">
+			<staticText>
+				<reportElement x="433" y="24" width="112" height="39" forecolor="#032337" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="24" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[INVOICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="106" width="75" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SO No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="126" width="100" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="146" width="100" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="146" width="75" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ref No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="106" width="100" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="126" width="75" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="106" y="106" width="71" height="20" uuid="9a7caf79-8ba0-4618-85e7-652da4634faa"/>
+				<textFieldExpression><![CDATA[$F{customermaster_CustomerCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="126" width="197" height="20" uuid="a9b8d9ab-3bbc-4d4d-8dee-d8cab422f4b7"/>
+				<textFieldExpression><![CDATA[$F{customermaster_CustomerName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="106" y="146" width="197" height="20" uuid="bb646479-b8c9-438b-a9ee-84401d65bb36"/>
+				<textFieldExpression><![CDATA[$F{customermaster_PostalAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="473" y="106" width="76" height="20" uuid="7332f628-f88f-40ea-a76d-29d62fb674c1"/>
+				<textFieldExpression><![CDATA[$F{salesinvoice_SoNumber}]]></textFieldExpression>
+			</textField>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="473" y="126" width="76" height="20" uuid="106383a0-71c7-4b07-a33f-0b4125832143"/>
+				<textFieldExpression><![CDATA[$F{salesinvoice_SystemDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="473" y="146" width="76" height="20" uuid="55275d42-6005-4730-993e-f20b3dcc8768"/>
+				<textFieldExpression><![CDATA[$F{salesinvoice_RefNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="62" width="84" height="16" forecolor="#000000" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fax: 0112552665]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="33" width="99" height="16" forecolor="#000000" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[267, Nawala Rd, Rajagiriya]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="75" width="140" height="16" forecolor="#000000" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Website:www.roofing.lk  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="47" width="79" height="16" forecolor="#000000" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Phone: 0112552662]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="62" width="84" height="16" forecolor="#000000" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Fax: 0112552665]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="97" width="139" height="1" uuid="257c2262-a807-4a1f-8df2-ba91c739f6c5"/>
+				<graphicElement>
+					<pen lineWidth="4.75" lineColor="#032337"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="8" y="17" width="99" height="16" forecolor="#032337" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roofing.lk]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="44" splitType="Stretch">
+			<rectangle>
+				<reportElement x="-5" y="0" width="560" height="31" backcolor="#032337" uuid="acb1cd16-f079-4af4-8d42-09afed95f151"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="454" y="6" width="38" height="20" forecolor="#FFFFFF" uuid="e9aee81c-d710-492c-8060-cd167b25e301"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Disc %]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="6" width="57" height="20" forecolor="#FFFFFF" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="7" width="60" height="20" forecolor="#FFFFFF" uuid="a5edf4ad-56ff-4dab-8937-0b5e072eb25f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Sub Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="7" width="53" height="20" forecolor="#FFFFFF" uuid="6eafd395-e754-4f9e-ae83-825cc2ac24e1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="359" y="7" width="39" height="20" forecolor="#FFFFFF" uuid="69245d48-4a99-447c-adf6-d45f83f20795"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[UoM Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="65" y="6" width="62" height="20" forecolor="#FFFFFF" uuid="83f9798c-3bc3-4553-905e-2109abbc3996"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="7" width="51" height="20" forecolor="#FFFFFF" uuid="5740613d-2e01-4fd7-8b86-fd568edf88d5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="5" y="4" width="58" height="20" uuid="7308eff1-3096-4d15-8557-56f15a208516"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salesinvoiceitem_ItemCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="65" y="4" width="227" height="20" uuid="88bae5df-0e5a-4510-b1a3-aa1462a56844"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salesinvoiceitem_ItemName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="4" width="53" height="20" uuid="4e5a0ac5-0643-4a47-9fd6-640cd7b8c3c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salesinvoiceitem_Qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="359" y="4" width="39" height="20" uuid="aa2139b7-3358-457c-8d9d-b55a7d164ce3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salesinvoiceitem_Uom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="398" y="4" width="51" height="20" uuid="0f126809-1030-490c-9980-d171a9c1e171"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salesinvoiceitem_UnitPrice}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="454" y="4" width="38" height="20" uuid="6abb3be3-c91c-45c0-874c-fb06955cf64d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salesinvoiceitem_DiscountPct}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="493" y="4" width="61" height="20" uuid="d6a77721-9e72-4bff-86c0-f969f5713dfb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{salesinvoiceitem_SubTtl}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="6" y="24" width="543" height="3" uuid="a4b44ef7-a94b-4658-98e1-ad8dc4c48202"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="35" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="167" splitType="Stretch">
+			<staticText>
+				<reportElement x="404" y="40" width="123" height="20" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Authorized Signature]]></text>
+			</staticText>
+			<line>
+				<reportElement x="404" y="37" width="123" height="1" uuid="c6c5ab38-2fb2-4255-bb7f-627de0953738"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="192" y="107" width="170" height="20" forecolor="#032337" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Thank You For Your Business!]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="90" width="332" height="20" forecolor="#032337" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[If you have any questions about this invoice, please contact]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="125" width="555" height="10" forecolor="#032337" backcolor="#032337" uuid="dade6d9c-0e02-45b4-8634-eff86d15e5d9"/>
+			</rectangle>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="142" width="100" height="20" uuid="2c5b22f1-9f73-4c42-9d40-48bc19a2ba64"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="424" y="142" width="80" height="20" uuid="b7853fb8-748a-4d38-929c-840fe34ffbaa"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="504" y="142" width="40" height="20" uuid="78d8ed6d-3142-4e05-97f9-987b8702dcc6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="142" width="100" height="20" uuid="d12df6f2-100b-4173-8286-b87514cf738d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{UserName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="177" y="142" width="59" height="20" forecolor="#000000" uuid="728a2667-7edd-4305-b65c-b602d9c19c83"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Printed By:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

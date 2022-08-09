@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ca6f0512-a692-498a-a0d5-798e6a377504">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="FromItemCode" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="toItemCode" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="UserName" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     itemmaster.`InternalId` AS itemmaster_InternalId,
+     itemmaster.`ItemCode` AS itemmaster_ItemCode,
+     itemmaster.`ItemName` AS itemmaster_ItemName,
+     itemmaster.`UoM` AS itemmaster_UoM,
+     itemmaster.`Cost` AS itemmaster_Cost,
+     itemmaster.`UnitPrice` AS itemmaster_UnitPrice,
+     itemmaster.`DiscountPct` AS itemmaster_DiscountPct,
+     itemmaster.`Qty` AS itemmaster_Qty,
+     itemmaster.`Status` AS itemmaster_Status
+FROM
+     `itemmaster`
+WHERE itemmaster.`ItemCode` BETWEEN $P{FromItemCode} AND $P{toItemCode}]]>
+	</queryString>
+	<field name="itemmaster_InternalId" class="java.lang.Integer"/>
+	<field name="itemmaster_ItemCode" class="java.lang.String"/>
+	<field name="itemmaster_ItemName" class="java.lang.String"/>
+	<field name="itemmaster_UoM" class="java.lang.String"/>
+	<field name="itemmaster_Cost" class="java.lang.Double"/>
+	<field name="itemmaster_UnitPrice" class="java.lang.Double"/>
+	<field name="itemmaster_DiscountPct" class="java.lang.Double"/>
+	<field name="itemmaster_Qty" class="java.lang.Integer"/>
+	<field name="itemmaster_Status" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="555" height="37" uuid="f772487e-8c82-453a-ac82-24d10bd6c59d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Inventory Report]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="261" y="59" width="100" height="20" uuid="1885de07-77e5-465d-9852-dfd645533865"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{FromItemCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="398" y="59" width="100" height="20" uuid="bfcdd757-d9b8-4245-913b-d741c725b086"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{toItemCode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="210" y="59" width="39" height="20" uuid="ac98360e-4ecb-4dd6-afb5-5854b8fe01fe"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[From]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="59" width="26" height="20" uuid="426304bd-8642-409a-892d-4a5643da6946"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="59" width="43" height="20" uuid="12b0445d-3931-4b60-9328-a0ebf0b4b5db"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[As AT]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="102" y="59" width="100" height="20" uuid="f53f14cc-a46f-4ef2-a73f-feedd3e20c45"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="35" forecolor="#032337" backcolor="#032337" uuid="42c53839-ae53-4dae-8a36-6c1f2036bbdf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="9" width="100" height="20" forecolor="#FFFFFF" uuid="09fa9f2f-4fe6-4110-926e-5361349951ec"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="9" width="100" height="20" forecolor="#FFFFFF" uuid="c049ffd2-c385-4974-bd01-53947b503b04"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Item Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="9" width="90" height="20" forecolor="#FFFFFF" uuid="857ca0c4-62cb-4a9d-a591-5dd612693f41"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="9" width="54" height="20" forecolor="#FFFFFF" uuid="c41e6c24-f16c-4765-8a3a-3ea3e339639d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="13" isBold="false"/>
+				</textElement>
+				<text><![CDATA[UOM]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="27" width="555" height="1" uuid="d9264db0-e18b-4267-ad4e-5fd436c2cc8e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="6" width="100" height="20" uuid="a85fbc14-3721-4743-89ee-82e401a4d2a9"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{itemmaster_ItemCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="6" width="279" height="20" uuid="4c6a01aa-cb13-47d8-9c4b-f5a6c3e27769"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{itemmaster_ItemName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="6" width="90" height="20" uuid="bbab8d85-d643-4e53-93e1-50762789c8a8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{itemmaster_Qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="6" width="54" height="20" uuid="3c52e588-e86c-4d54-ae77-e9658872fcc8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{itemmaster_UoM}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="9" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="12" backcolor="#032337" uuid="42c53839-ae53-4dae-8a36-6c1f2036bbdf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="195" y="17" width="184" height="31" forecolor="#000000" uuid="c3108ca2-ed69-4763-b0af-08445b09b271"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roofing.lk - Nawala]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="2" y="17" width="100" height="20" uuid="24d5fbbe-bd1e-4c02-94c0-6d9e1ca7ccb3"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="20" width="80" height="20" uuid="75dd058b-6851-475c-b961-ad7d082cbc02"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="509" y="20" width="40" height="20" uuid="e74c82d0-6302-47f4-99fc-02c1640ecbe4"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="34" width="59" height="20" forecolor="#000000" uuid="728a2667-7edd-4305-b65c-b602d9c19c83"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Printed By:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="61" y="34" width="100" height="20" uuid="a02e2527-aa54-4d1e-bc01-031978aa9f0d"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{UserName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch"/>
+	</summary>
+</jasperReport>
